@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Digital - Pembayaran</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">NikahDigital</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="katalog.html">Katalog</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="bayar.html">Bayar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6">
+                    <div class="card p-4 shadow-sm border-0">
+                        <h3 class="fw-bold mb-4 text-center">Formulir Pemesanan</h3>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Pilih Paket Utama</label>
+                            <select id="paket" class="form-select" onchange="hitungTotal()">
+                                <option value="150000">Paket Basic (Rp 150.000)</option>
+                                <option value="250000">Paket Premium (Rp 250.000)</option>
+                                <option value="400000">Paket Eksklusif (Rp 400.000)</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label d-block">Fitur Tambahan (Add-on)</label>
+                            <div class="form-check">
+                                <input class="form-check-input addon" type="checkbox" value="50000" id="addon1" onchange="hitungTotal()">
+                                <label class="form-check-input-label" for="addon1">Custom Lagu Sendiri (+Rp 50.000)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input addon" type="checkbox" value="75000" id="addon2" onchange="hitungTotal()">
+                                <label class="form-check-input-label" for="addon2">E-Angpao & RSVP Digital (+Rp 75.000)</label>
+                            </div>
+                        </div>
+
+                        <div class="bg-light p-3 rounded mb-4 d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 fw-bold">Total Pembayaran:</h5>
+                            <h4 class="mb-0 text-primary fw-bold" id="displayTotal">Rp 150.000</h4>
+                        </div>
+
+                        <button class="btn btn-primary w-100 btn-lg" onclick="prosesBayar()">Lanjutkan ke Pembayaran</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p class="mb-0">&copy; 2026 NikahDigital. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function hitungTotal() {
+            let hargaPaket = parseInt(document.getElementById('paket').value);
+            let addons = document.querySelectorAll('.addon');
+            let totalAddon = 0;
+
+            addons.forEach(addon => {
+                if(addon.checked) {
+                    totalAddon += parseInt(addon.value);
+                }
+            });
+
+            let totalSemua = hargaPaket + totalAddon;
+            // Format Rupiah sederhana
+            document.getElementById('displayTotal').innerText = 'Rp ' + totalSemua.toLocaleString('id-ID');
+        }
+
+        function prosesBayar() {
+            alert('Pesanan Anda berhasil dicatat! Silakan lakukan transfer ke nomor rekening yang akan dikirim via WhatsApp.');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

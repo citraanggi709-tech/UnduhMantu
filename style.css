@@ -1,0 +1,50 @@
+/* Custom Google Fonts atau pengaturan dasar jika dibutuhkan */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333333;
+}
+
+/* Kustomisasi Warna Primary agar bernuansa Wedding/Elegan (Soft Pink/Blue/Purple) */
+.text-primary, .navbar-brand {
+    color: #d63384 !important; /* Warna Pink Cerah Khas Wedding */
+}
+
+.btn-primary {
+    background-color: #d63384;
+    border-color: #d63384;
+}
+
+.btn-primary:hover {
+    background-color: #b7246e;
+    border-color: #b7246e;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+/* Tinggi Hero Section */
+.hero-section {
+    min-height: 80vh;
+}
+
+/* Animasi transisi link */
+.nav-link {
+    transition: color 0.2s ease-in-out;
+}
+.nav-link:hover {
+    color: #d63384 !important;
+}
+
+/* Responsivitas Tambahan Mobile */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+    }
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+}
