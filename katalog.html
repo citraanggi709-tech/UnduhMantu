@@ -3,75 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Digital - Katalog</title>
+    <title>Undangan Digital - Katalog Premium</title>
+    <!-- Bootstrap 5.3.0 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome untuk Ikon Modern -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom smooth transition untuk tampilan lebih modern */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 1rem 3rem rgba(0,0,0,0.12) !important;
+        }
+        .btn-demo {
+            border: 1px solid #0d6efd;
+            background: transparent;
+            color: #0d6efd;
+            transition: all 0.3s ease;
+        }
+        .btn-demo:hover {
+            background: #0d6efd;
+            color: #fff;
+        }
+        .badge-category {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .badge-category:hover, .badge-category.active {
+            background-color: #0d6efd !important;
+            color: #fff !important;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold text-primary" href="index.html">NikahDigital</a>
+            <a class="navbar-brand fw-bold text-primary fs-4" href="index.html">
+                <i class="fa-solid fa-heart-envelope me-2"></i>NikahDigital
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
-                    <li class="nav-item"><a class="nav-link active fw-bold" href="katalog.html">Katalog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="bayar.html">Bayar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="tentang.html">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold px-3 text-primary" href="katalog.html">Katalog</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="bayar.html">Bayar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="kontak.html">Kontak</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Pilihan Tema Undangan</h2>
-                <p class="text-muted">Pilih desain yang paling mencerminkan kisah cinta Anda.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0">
-                        <img src="https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=60" class="card-img-top" alt="Tema Rustic">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Rustic Elegant</h5>
-                            <p class="card-text text-muted">Perpaduan warna kayu cokelat hangat dengan sentuhan bunga floral yang estetik.</p>
-                            <a href="bayar.html" class="btn btn-primary w-100">Pilih Tema</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0">
-                        <img src="https://images.unsplash.com/photo-1519225495810-7512c696505a?w=600&auto=format&fit=crop&q=60" class="card-img-top" alt="Tema Minimalis">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Modern Minimalist</h5>
-                            <p class="card-text text-muted">Desain bersih, berkelas, dominasi warna putih/pastel, berfokus pada kejelasan informasi.</p>
-                            <a href="bayar.html" class="btn btn-primary w-100">Pilih Tema</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0">
-                        <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=60" class="card-img-top" alt="Tema Luxury">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Royal Luxury</h5>
-                            <p class="card-text text-muted">Nuansa premium dengan aksen emas gelap, sangat cocok untuk pernikahan megah.</p>
-                            <a href="bayar.html" class="btn btn-primary w-100">Pilih Tema</a>
-                        </div>
-                    </div>
-                </div>
+    <!-- HEADER & FILTER -->
+    <section class="py-5 bg-white border-bottom">
+        <div class="container text-center">
+            <span class="badge bg-primary-subtle text-primary mb-2 px-3 py-2 rounded-pill fw-semibold">Koleksi Terbaru 2026</span>
+            <h1 class="fw-extrabold text-dark mb-3">Pilihan Tema Undangan Terbaik</h1>
+            <p class="text-muted mx-auto" style="max-width: 600px;">Temukan desain undangan digital yang dikonsep secara matang, responsif, dan penuh fitur untuk menyempurnakan hari bahagia Anda.</p>
+            
+            <!-- Filter Kategori Klien (Simulasi Visual) -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                <span class="badge badge-category bg-light text-dark px-3 py-2 rounded-pill border active">Semua Desain</span>
+                <span class="badge badge-category bg-light text-dark px-3 py-2 rounded-pill border">Modern Minimalis</span>
+                <span class="badge badge-category bg-light text-dark px-3 py-2 rounded-pill border">Luxury & Elegant</span>
+                <span class="badge badge-category bg-light text-dark px-3 py-2 rounded-pill border">Rustic / Floral</span>
+                <span class="badge badge-category bg-light text-dark px-3 py-2 rounded-pill border">Adat / Tradisional</span>
             </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p class="mb-0">&copy; 2026 NikahDigital. All Rights Reserved.</p>
+    <!-- KATALOG PRODUK -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                
+                <!-- TEMA 1: RUSTIC -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 overflow-hidden position-relative">
+                        <span class="position-absolute top-0 start-0 m-3 badge bg-danger z-3">Best Seller</span>
+                        <img src="https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=60" class="card-img-top object-fit-cover" style="height: 240px;" alt="Tema Rustic">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <small class="text-primary fw-semibold">Rustic / Vintage</small>
+                                <span class="text-warning small"><i class="fa-solid fa-star"></i> 4.9 (120 ulasan)</span>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark mb-2">Rustic Warmth</h5>
+                            <p class="card-text text-muted small flex-grow-1">Kombinasi warna kayu hangat dengan aksen dedaunan estetik. Sangat cocok untuk konsep pernikahan outdoor maupun garden party.</p>
+                            
+                            <!-- Detail Fitur -->
+                            <div class="my-3 py-2 border-top border-bottom">
+                                <div class="row g-2 text-muted small">
+                                    <div class="col-6"><i class="fa-solid fa-music text-success me-1"></i> Background Music</div>
+                                    <div class="col-6"><i class="fa-solid fa-map-location-dot text-success me-1"></i> Google Maps</div>
+                                    <div class="col-6"><i class="fa-solid fa-images text-success me-1"></i> Galeri Foto</div>
+                                    <div class="col-6"><i class="fa-solid fa-envelope-open-text text-success me-1"></i> Fitur RSVP</div>
+                                </div>
+                            </div>
+
+                            <!-- Harga -->
+                            <div class="mb-3">
+                                <span class="text-muted text-decoration-line-through small">Rp 149.000</span>
+                                <span class="h5 fw-bold text-primary d-block">Rp 99.000</span>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <a href="#" class="btn btn-demo w-100 fw-medium"><i class="fa-solid fa-eye me-1"></i> Demo</a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="bayar.html" class="btn btn-primary w-100 fw-medium">Pilih</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEMA 2: MINIMALIST -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 overflow-hidden position-relative">
+                        <span class="position-absolute top-0 start-0 m-3 badge bg-info text-dark z-3">Populer</span>
+                        <img src="https://images.unsplash.com/photo-1519225495810-7512c696505a?w=600&auto=format&fit=crop&q=60" class="card-img-top object-fit-cover" style="height: 240px;" alt="Tema Minimalis">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <small class="text-primary fw-semibold">Modern Minimalis</small>
+                                <span class="text-warning small"><i class="fa-solid fa-star"></i> 4.8 (85 ulasan)</span>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark mb-2">Serene Pastel</h5>
+                            <p class="card-text text-muted small flex-grow-1">Tampilan bersih berfokus pada tipografi yang indah dengan dominasi warna pastel yang menenangkan jiwa, sangat rapi dan modern.</p>
+                            
+                            <!-- Detail Fitur -->
+                            <div class="my-3 py-2 border-top border-bottom">
+                                <div class="row g-2 text-muted small">
+                                    <div class="col-6"><i class="fa-solid fa-music text-success me-1"></i> Musik Bebas</div>
+                                    <div class="col-6"><i class="fa-solid fa-clock text-success me-1"></i> Countdown Timer</div>
+                                    <div class="col-6"><i class="fa-solid fa-book-open text-success me-1"></i> Kisah Cinta</div>
+                                    <div class="col-6"><i class="fa-solid fa-gift text-success me-1"></i> Amplop Digital</div>
+                                </div>
+                            </div>
+
+                            <!-- Harga -->
+                            <div class="mb-3">
+                                <span class="text-muted text-decoration-line-through small">Rp 149.000</span>
+                                <span class="h5 fw-bold text-primary d-block">Rp 99.000</span>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <a href="#" class="btn btn-demo w-100 fw-medium"><i class="fa-solid fa-eye me-1"></i> Demo</a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="bayar.html" class="btn btn-primary w-100 fw-medium">Pilih</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEMA 3: LUXURY -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 overflow-hidden position-relative">
+                        <span class="position-absolute top-0 start-0 m-3 badge bg-warning text-dark z-3">Premium</span>
+                        <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=60" class="card-img-top object-fit-cover" style="height: 240px;" alt="Tema Luxury">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <small class="text-primary fw-semibold">Luxury / Elegant</small>
+                                <span class="text-warning small"><i class="fa-solid fa-star"></i> 5.0 (92 ulasan)</span>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark mb-2">Royal Gold & Navy</h5>
+                            <p class="card-text text-muted small flex-grow-1">Perpaduan warna biru tua eksklusif dan ornamen emas berkilau. Dirancang khusus untuk kesan pesta pernikahan megah dan formal.</p>
+                            
+                            <!-- Detail Fitur -->
+                            <div class="my-3 py-2 border-top border-bottom">
+                                <div class="row g-2 text-muted small">
+                                    <div class="col-6"><i class="fa-solid fa-video text-success me-1"></i> Live Streaming</div>
+                                    <div class="col-6"><i class="fa-solid fa-qrcode text-success me-1"></i> QR Code Anggota</div>
+                                    <div class="col-6"><i class="fa-solid fa-comment-dots text-success me-1"></i> Ucapan (Ucapan)</div>
+                                    <div class="col-6"><i class="fa-solid fa-user-plus text-success me-1"></i> Nama Tamu Kustom</div>
+                                </div>
+                            </div>
+
+                            <!-- Harga -->
+                            <div class="mb-3">
+                                <span class="text-muted text-decoration-line-through small">Rp 249.000</span>
+                                <span class="h5 fw-bold text-primary d-block">Rp 149.000</span>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <a href="#" class="btn btn-demo w-100 fw-medium"><i class="fa-solid fa-eye me-1"></i> Demo</a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="bayar.html" class="btn btn-primary w-100 fw-medium">Pilih</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-2 fw-bold text-uppercase tracking-wider">NikahDigital</p>
+            <p class="mb-0 text-muted small">&copy; 2026 NikahDigital. All Rights Reserved. Dibuat dengan penuh ❤️ untuk hari bahagia Anda.</p>
+        </div>
     </footer>
 
+    <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
