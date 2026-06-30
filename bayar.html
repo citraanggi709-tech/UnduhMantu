@@ -3,95 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Digital - Pembayaran</title>
+    <title>NikahDigital - Formulir Pemesanan & Pembayaran</title>
+    <!-- Bootstrap 5.3.0 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome untuk Ikon Modern -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-pink: #D81B60; /* Deep Pink Premium */
+            --dark-pink: #880E4F;    /* Royal Burgundy */
+            --hover-pink: #C2185B;   /* Magenta Medium */
+            --light-pink: #FCE4EC;   /* Background Lembut */
+            --dark-text: #263238;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-text);
+            background-color: #f8f9fa;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .text-pink { color: var(--primary-pink) !important; }
+        .bg-pink { background-color: var(--primary-pink) !important; }
+        .bg-pink-light { background-color: var(--light-pink) !important; }
+        
+        /* Navbar Custom Line active */
+        .navbar-brand { font-family: 'Playfair Display', serif; }
+        .nav-link.active {
+            color: var(--primary-pink) !important;
+            position: relative;
+        }
+        .nav-link.active::after {
+            content: ''; position: absolute; width: 30px; height: 3px;
+            background: var(--primary-pink); bottom: 0; left: 1rem; border-radius: 2px;
+        }
+
+        /* Form Controls Custom Focus State */
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 0 0.25rem rgba(216, 27, 96, 0.15);
+        }
+
+        /* Interactive Payment Methods Selection Box */
+        .payment-method-box {
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .payment-method-box:hover {
+            border-color: var(--primary-pink);
+            background-color: #fff8f9;
+        }
+        .payment-radio:checked + .payment-method-box {
+            border-color: var(--primary-pink);
+            background-color: var(--light-pink);
+        }
+
+        /* Modernized Sticky Invoice Sidebar Card */
+        .invoice-card {
+            border: none;
+            border-radius: 24px;
+            background: white;
+            box-shadow: 0 1rem 3rem rgba(0,0,0,0.05);
+            position: sticky;
+            top: 110px;
+        }
+
+        /* Custom Checkout Button Styling */
+        .btn-checkout {
+            background: linear-gradient(135deg, var(--primary-pink), var(--hover-pink));
+            color: white; border: none; border-radius: 12px;
+            font-weight: 600; padding: 14px; transition: all 0.3s;
+        }
+        .btn-checkout:hover {
+            background: linear-gradient(135deg, var(--hover-pink), var(--dark-pink));
+            color: white; transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(216, 27, 96, 0.3);
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold text-primary" href="index.html">NikahDigital</a>
+            <a class="navbar-brand fw-bold text-pink fs-3" href="index.html">
+                <i class="fa-solid fa-heart me-2"></i>NikahDigital
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
-                    <li class="nav-item"><a class="nav-link" href="katalog.html">Katalog</a></li>
-                    <li class="nav-item"><a class="nav-link active fw-bold" href="bayar.html">Bayar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                <ul class="navbar-nav ms-auto align-items-center fw-medium">
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="tentang.html">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="katalog.html">Katalog</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold px-3" href="bayar.html">Bayar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="kontak.html">Kontak</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- FORM PEMBAYARAN UTAMA -->
     <section class="py-5">
         <div class="container">
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-6">
-                    <div class="card p-4 shadow-sm border-0">
-                        <h3 class="fw-bold mb-4 text-center">Formulir Pemesanan</h3>
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="fw-bold font-serif display-6">Satu Langkah Menuju Hari Bahagia</h2>
+                <p class="text-muted">Isi detail data pemesanan undangan digital eksklusif Anda di bawah ini.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- PANEL KIRI: DATA FORMULIR -->
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="card p-4 p-md-5 shadow-sm border-0 rounded-4 bg-white mb-4">
+                        <h4 class="fw-bold font-serif mb-4 text-dark"><i class="fa-solid fa-user-pen text-pink me-2"></i>1. Data Pasangan Pengantin</h4>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold">Nama Lengkap Mempelai Pria</label>
+                                <input type="text" id="pria" class="form-control form-control-lg" placeholder="Contoh: Rian Anggara" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold">Nama Lengkap Mempelai Wanita</label>
+                                <input type="text" id="wanita" class="form-control form-control-lg" placeholder="Contoh: Amelia Putri" required>
+                            </div>
+                            <div class="col-11 col-md-12">
+                                <label class="form-label small fw-semibold">Nomor WhatsApp Aktif (Konfirmasi Sistem)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light">+62</span>
+                                    <input type="tel" id="whatsapp" class="form-control form-control-lg" placeholder="812345678xx" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card p-4 p-md-5 shadow-sm border-0 rounded-4 bg-white mb-4">
+                        <h4 class="fw-bold font-serif mb-4 text-dark"><i class="fa-solid fa-layer-group text-pink me-2"></i>2. Konfigurasi Paket & Add-on</h4>
                         
-                        <div class="mb-3">
-                            <label class="form-label">Pilih Paket Utama</label>
-                            <select id="paket" class="form-select" onchange="hitungTotal()">
-                                <option value="150000">Paket Basic (Rp 150.000)</option>
-                                <option value="250000">Paket Premium (Rp 250.000)</option>
-                                <option value="400000">Paket Eksklusif (Rp 400.000)</option>
+                        <div class="mb-4">
+                            <label class="form-label small fw-semibold">Pilih Paket Desain Utama</label>
+                            <select id="paket" class="form-select form-select-lg" onchange="hitungTotal()">
+                                <option value="150000" data-nama="Paket Basic">Paket Basic (Rp 150.000)</option>
+                                <option value="250000" data-nama="Paket Premium" selected>Paket Premium (Rp 250.000)</option>
+                                <option value="400000" data-nama="Paket Eksklusif">Paket Eksklusif (Rp 400.000)</option>
                             </select>
                         </div>
 
-                        <div class="mb-4">
-                            <label class="form-label d-block">Fitur Tambahan (Add-on)</label>
-                            <div class="form-check">
-                                <input class="form-check-input addon" type="checkbox" value="50000" id="addon1" onchange="hitungTotal()">
-                                <label class="form-check-input-label" for="addon1">Custom Lagu Sendiri (+Rp 50.000)</label>
+                        <label class="form-label small fw-semibold d-block mb-2">Fitur Tambahan (Opsional)</label>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="form-check p-3 border rounded-3 bg-light">
+                                <input class="form-check-input addon ms-1 me-2" type="checkbox" value="50000" id="addon1" data-nama="Custom Lagu Sendiri" onchange="hitungTotal()">
+                                <label class="form-check-label fw-medium ms-2" for="addon1">Custom Audio/Lagu Latar Sendiri <span class="text-pink small d-block fw-normal">+Rp 50.000</span></label>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input addon" type="checkbox" value="75000" id="addon2" onchange="hitungTotal()">
-                                <label class="form-check-input-label" for="addon2">E-Angpao & RSVP Digital (+Rp 75.000)</label>
+                            <div class="form-check p-3 border rounded-3 bg-light">
+                                <input class="form-check-input addon ms-1 me-2" type="checkbox" value="75000" id="addon2" data-nama="E-Angpao & RSVP" onchange="hitungTotal()">
+                                <label class="form-check-label fw-medium ms-2" for="addon2">Integrasi E-Angpao & Konfirmasi RSVP Digital <span class="text-pink small d-block fw-normal">+Rp 75.000</span></label>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="bg-light p-3 rounded mb-4 d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0 fw-bold">Total Pembayaran:</h5>
-                            <h4 class="mb-0 text-primary fw-bold" id="displayTotal">Rp 150.000</h4>
+                    <div class="card p-4 p-md-5 shadow-sm border-0 rounded-4 bg-white">
+                        <h4 class="fw-bold font-serif mb-4 text-dark"><i class="fa-solid fa-credit-card text-pink me-2"></i>3. Metode Pembayaran</h4>
+                        <div class="row g-3">
+                            <div class="col-6 col-md-4">
+                                <input type="radio" class="btn-check payment-radio" name="payment" id="payBca" checked>
+                                <label class="payment-method-box p-3 text-center w-100 d-block" for="payBca">
+                                    <i class="fa-solid fa-building-columns fs-3 text-secondary d-block mb-2"></i>
+                                    <span class="fw-bold small text-dark">Transfer BCA</span>
+                                </label>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <input type="radio" class="btn-check payment-radio" name="payment" id="payMandiri">
+                                <label class="payment-method-box p-3 text-center w-100 d-block" for="payMandiri">
+                                    <i class="fa-solid fa-money-check-dollar fs-3 text-secondary d-block mb-2"></i>
+                                    <span class="fw-bold small text-dark">Bank Mandiri</span>
+                                </label>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <input type="radio" class="btn-check payment-radio" name="payment" id="payQris">
+                                <label class="payment-method-box p-3 text-center w-100 d-block" for="payQris">
+                                    <i class="fa-solid fa-qrcode fs-3 text-secondary d-block mb-2"></i>
+                                    <span class="fw-bold small text-dark">QRIS Instan</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL KANAN: LIVE RINGKASAN INVOICE -->
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="card p-4 invoice-card">
+                        <h5 class="fw-bold font-serif border-bottom pb-3 text-dark"><i class="fa-solid fa-receipt text-pink me-2"></i>Ringkasan Pembelian</h5>
+                        
+                        <div class="py-3 d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-semibold d-block text-dark" id="invoicePaketNama">Paket Premium</span>
+                                <small class="text-muted">Biaya Lisensi Desain Utama</small>
+                            </div>
+                            <span class="fw-bold text-dark" id="invoicePaketHarga">Rp 250.000</span>
                         </div>
 
-                        <button class="btn btn-primary w-100 btn-lg" onclick="prosesBayar()">Lanjutkan ke Pembayaran</button>
+                        <div id="invoiceAddonContainer" class="border-top pt-2" style="display:none;">
+                            <small class="text-muted fw-bold text-uppercase d-block mb-2">Fitur Tambahan:</small>
+                            <div id="addonList"></div>
+                        </div>
+
+                        <div class="bg-pink-light p-3 rounded-3 mt-4 d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0 fw-bold text-dark">Total Tagihan</h6>
+                                <small class="text-muted small">Sudah termasuk PPN</small>
+                            </div>
+                            <h4 class="mb-0 text-pink fw-bold" id="displayTotal">Rp 250.000</h4>
+                        </div>
+
+                        <div class="text-muted small d-flex gap-2 mt-3 mb-4 px-1">
+                            <i class="fa-solid fa-shield-halved text-success mt-1"></i>
+                            <span>Data transaksi Anda terenkripsi dengan aman oleh sistem lisensi NikahDigital.</span>
+                        </div>
+
+                        <button class="btn btn-checkout w-100 btn-lg shadow-sm" onclick="prosesBayar()">
+                            <i class="fa-solid fa-lock me-2"></i>Selesaikan Pesanan Sekarang
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p class="mb-0">&copy; 2026 NikahDigital. All Rights Reserved.</p>
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container text-center">
+            <p class="mb-2 fw-bold text-uppercase font-serif text-pink fs-4"><i class="fa-solid fa-heart me-2"></i>NikahDigital</p>
+            <p class="text-muted small mb-4">Platform pembuatan website undangan digital yang praktis, estetik, dan efisien.</p>
+            <p class="mb-0 text-muted small">&copy; 2026 NikahDigital. All Rights Reserved.</p>
+        </div>
     </footer>
 
+    <!-- LOGIC SYSTEM JAVASCRIPT & DATA BINDING -->
     <script>
         function hitungTotal() {
-            let hargaPaket = parseInt(document.getElementById('paket').value);
+            let paketSelect = document.getElementById('paket');
+            let hargaPaket = parseInt(paketSelect.value);
+            let namaPaket = paketSelect.options[paketSelect.selectedIndex].getAttribute('data-nama');
+
+            // Update live invoice info paket utama
+            document.getElementById('invoicePaketNama').innerText = namaPaket;
+            document.getElementById('invoicePaketHarga').innerText = 'Rp ' + hargaPaket.toLocaleString('id-ID');
+
             let addons = document.querySelectorAll('.addon');
             let totalAddon = 0;
+            let addonHtml = '';
+            let hasAddon = false;
 
             addons.forEach(addon => {
                 if(addon.checked) {
-                    totalAddon += parseInt(addon.value);
+                    hasAddon = true;
+                    let hargaAddon = parseInt(addon.value);
+                    let namaAddon = addon.getAttribute('data-nama');
+                    totalAddon += hargaAddon;
+
+                    // Buat list item baru untuk summary invoice sidebar
+                    addonHtml += `
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="small text-secondary"><i class="fa-solid fa-plus text-pink me-1 small"></i>${namaAddon}</span>
+                            <span class="small text-dark fw-medium">Rp ${hargaAddon.toLocaleString('id-ID')}</span>
+                        </div>`;
                 }
             });
 
+            // Tampilkan atau sembunyikan section addon di invoice jika tidak diceklis
+            let addonContainer = document.getElementById('invoiceAddonContainer');
+            if(hasAddon) {
+                addonContainer.style.display = 'block';
+                document.getElementById('addonList').innerHTML = addonHtml;
+            } else {
+                addonContainer.style.display = 'none';
+            }
+
             let totalSemua = hargaPaket + totalAddon;
-            // Format Rupiah sederhana
             document.getElementById('displayTotal').innerText = 'Rp ' + totalSemua.toLocaleString('id-ID');
         }
 
         function prosesBayar() {
-            alert('Pesanan Anda berhasil dicatat! Silakan lakukan transfer ke nomor rekening yang akan dikirim via WhatsApp.');
+            let namaPria = document.getElementById('pria').value.trim();
+            let namaWanita = document.getElementById('wanita').value.trim();
+            let noWa = document.getElementById('whatsapp').value.trim();
+            let totalBayar = document.getElementById('displayTotal').innerText;
+
+            if(namaPria === "" || namaWanita === "" || noWa === "") {
+                alert("Mohon lengkapi data pasangan pengantin dan nomor WhatsApp Anda terlebih dahulu.");
+                return;
+            }
+
+            // Integrasi Otomatis Pesanan menuju WhatsApp Admin (Teknik Marketing Konversi Tinggi)
+            let teksWa = `Halo NikahDigital, saya ingin mengonfirmasi pesanan Undangan Pernikahan.\n\n` +
+                         `🤵 Mempelai Pria: ${namaPria}\n` +
+                         `👰 Mempelai Wanita: ${namaWanita}\n` +
+                         `📱 No. WhatsApp: +62${noWa}\n` +
+                         `💰 *Total Pembayaran:* ${totalBayar}\n\n` +
+                         `Mohon kirimkan detail petunjuk nomor rekening pembayarannya. Terima kasih!`;
+            
+            let urlWhatsapp = `https://api.whatsapp.com/send?phone=628123456789&text=${encodeURIComponent(teksWa)}`;
+            
+            // Buka tab WhatsApp otomatis
+            window.open(urlWhatsapp, '_blank');
         }
+
+        // Jalankan kalkulator total harga saat pertama kali halaman dimuat
+        window.onload = function() {
+            hitungTotal();
+        };
     </script>
+    
+    <!-- Bootstrap & AOS Animation JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+    </script>
 </body>
 </html>
