@@ -251,78 +251,86 @@
 
     <!-- LOGIC SYSTEM JAVASCRIPT & DATA BINDING -->
     <script>
-        function hitungTotal() {
-            let paketSelect = document.getElementById('paket');
-            let hargaPaket = parseInt(paketSelect.value);
-            let namaPaket = paketSelect.options[paketSelect.selectedIndex].getAttribute('data-nama');
+function hitungTotal() {
+    let paketSelect = document.getElementById('paket');
+    let hargaPaket = parseInt(paketSelect.value);
+    let namaPaket = paketSelect.options[paketSelect.selectedIndex].getAttribute('data-nama');
 
-            // Update live invoice info paket utama
-            document.getElementById('invoicePaketNama').innerText = namaPaket;
-            document.getElementById('invoicePaketHarga').innerText = 'Rp ' + hargaPaket.toLocaleString('id-ID');
+    // Update live invoice info paket utama
+    document.getElementById('invoicePaketNama').innerText = namaPaket;
+    document.getElementById('invoicePaketHarga').innerText = 'Rp ' + hargaPaket.toLocaleString('id-ID');
 
-            let addons = document.querySelectorAll('.addon');
-            let totalAddon = 0;
-            let addonHtml = '';
-            let hasAddon = false;
+    let addons = document.querySelectorAll('.addon');
+    let totalAddon = 0;
+    let addonHtml = '';
+    let hasAddon = false;
 
-            addons.forEach(addon => {
-                if(addon.checked) {
-                    hasAddon = true;
-                    let hargaAddon = parseInt(addon.value);
-                    let namaAddon = addon.getAttribute('data-nama');
-                    totalAddon += hargaAddon;
+    addons.forEach(addon => {
+        if(addon.checked) {
+            hasAddon = true;
+            let hargaAddon = parseInt(addon.value);
+            let namaAddon = addon.getAttribute('data-nama');
+            totalAddon += hargaAddon;
 
-                    // Buat list item baru untuk summary invoice sidebar
-                    addonHtml += `
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="small text-secondary"><i class="fa-solid fa-plus text-pink me-1 small"></i>${namaAddon}</span>
-                            <span class="small text-dark fw-medium">Rp ${hargaAddon.toLocaleString('id-ID')}</span>
-                        </div>`;
-                }
-            });
-
-            // Tampilkan atau sembunyikan section addon di invoice jika tidak diceklis
-            let addonContainer = document.getElementById('invoiceAddonContainer');
-            if(hasAddon) {
-                addonContainer.style.display = 'block';
-                document.getElementById('addonList').innerHTML = addonHtml;
-            } else {
-                addonContainer.style.display = 'none';
-            }
-
-            let totalSemua = hargaPaket + totalAddon;
-            document.getElementById('displayTotal').innerText = 'Rp ' + totalSemua.toLocaleString('id-ID');
+            // Buat list item baru untuk summary invoice sidebar
+            addonHtml += `
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="small text-secondary"><i class="fa-solid fa-plus text-pink me-1 small"></i>${namaAddon}</span>
+                    <span class="small text-dark fw-medium">Rp ${hargaAddon.toLocaleString('id-ID')}</span>
+                </div>`;
         }
+    });
 
-        function prosesBayar() {
-            let namaPria = document.getElementById('pria').value.trim();
-            let namaWanita = document.getElementById('wanita').value.trim();
-            let noWa = document.getElementById('whatsapp').value.trim();
-            let totalBayar = document.getElementById('displayTotal').innerText;
+    // Tampilkan atau sembunyikan section addon di invoice jika tidak diceklis
+    let addonContainer = document.getElementById('invoiceAddonContainer');
+    if(hasAddon) {
+        addonContainer.style.display = 'block';
+        document.getElementById('addonList').innerHTML = addonHtml;
+    } else {
+        addonContainer.style.display = 'none';
+    }
 
-            if(namaPria === "" || namaWanita === "" || noWa === "") {
-                alert("Mohon lengkapi data pasangan pengantin dan nomor WhatsApp Anda terlebih dahulu.");
-                return;
-            }
+    let totalSemua = hargaPaket + totalAddon;
+    document.getElementById('displayTotal').innerText = 'Rp ' + totalSemua.toLocaleString('id-ID');
+}
 
-            // Integrasi Otomatis Pesanan menuju WhatsApp Admin (Teknik Marketing Konversi Tinggi)
-            let teksWa = `Halo NikahDigital, saya ingin mengonfirmasi pesanan Undangan Pernikahan.\n\n` +
-                         `🤵 Mempelai Pria: ${namaPria}\n` +
-                         `👰 Mempelai Wanita: ${namaWanita}\n` +
-                         `📱 No. WhatsApp: +62${noWa}\n` +
-                         `💰 *Total Pembayaran:* ${totalBayar}\n\n` +
-                         `Mohon kirimkan detail petunjuk nomor rekening pembayarannya. Terima kasih!`;
-            
-            let urlWhatsapp = `https://api.whatsapp.com/send?phone=628123456789&text=${encodeURIComponent(teksWa)}`;
-            
-            // Buka tab WhatsApp otomatis
-            window.open(urlWhatsapp, '_blank');
-        }
+function prosesBayar() {
+    let namaPria = document.getElementById('pria').value.trim();
+    let namaWanita = document.getElementById('wanita').value.trim();
+    let noWa = document.getElementById('whatsapp').value.trim();
+    let totalBayar = document.getElementById('displayTotal').innerText;
 
-        // Jalankan kalkulator total harga saat pertama kali halaman dimuat
-        window.onload = function() {
-            hitungTotal();
-        };
+    // Mendapatkan metode pembayaran yang dipilih pelanggan
+    let metodeBayar = "Transfer Bank";
+    if(document.getElementById('payBca').checked) metodeBayar = "Transfer BCA";
+    if(document.getElementById('payMandiri').checked) metodeBayar = "Bank Mandiri";
+    if(document.getElementById('payQris').checked) metodeBayar = "QRIS Instan";
+
+    if(namaPria === "" || namaWanita === "" || noWa === "") {
+        alert("Mohon lengkapi data pasangan pengantin dan nomor WhatsApp Anda terlebih dahulu.");
+        return;
+    }
+
+    // Teks otomatis yang akan masuk ke WhatsApp Anda
+    let teksWa = `Halo NikahDigital, saya ingin mengonfirmasi pesanan Undangan Pernikahan.\n\n` +
+                 `🤵 Mempelai Pria: ${namaPria}\n` +
+                 `👰 Mempelai Wanita: ${namaWanita}\n` +
+                 `📱 No. WhatsApp Klien: +62${noWa}\n` +
+                 `💳 Metode Pembayaran: ${metodeBayar}\n` +
+                 `💰 *Total Pembayaran:* ${totalBayar}\n\n` +
+                 `Mohon kirimkan detail petunjuk pembayaran/proses selanjutnya. Terima kasih!`;
+    
+    // NOMOR WHATSAPP ANDA SUDAH DIINTEGRASIKAN DI SINI
+    let urlWhatsapp = `https://api.whatsapp.com/send?phone=6285896132557&text=${encodeURIComponent(teksWa)}`;
+    
+    // Buka tab WhatsApp otomatis ke nomor Anda
+    window.open(urlWhatsapp, '_blank');
+}
+
+// Jalankan kalkulator total harga saat pertama kali halaman dimuat
+window.onload = function() {
+    hitungTotal();
+};
     </script>
     
     <!-- Bootstrap & AOS Animation JS -->
