@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Digital - Katalog Premium Pink Edition</title>
+    <title>Undangan Digital - Katalog Premium Deep Pink Edition</title>
+    <!-- Bootstrap 5.3.0 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome untuk Ikon Modern -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display & Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-pink: #ff6b8b;
-            --hover-pink: #ee5272;
-            --light-pink: #fff0f3;
-            --rose-gold: #b76e79;
-            --dark-text: #2d3436;
+            --primary-pink: #D81B60; /* Pink Tua / Deep Pink */
+            --dark-pink: #880E4F;    /* Pink Gelap Berkelas */
+            --hover-pink: #C2185B;   /* Magenta Medium */
+            --light-pink: #FCE4EC;   /* Background Pink Lembut */
+            --dark-text: #263238;
         }
 
         body {
@@ -51,39 +54,40 @@
             border-radius: 2px;
         }
 
-        /* Card & Component Animations */
+        /* Card Customizations */
         .card {
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             border-radius: 16px !important;
+            border: 1px solid rgba(216, 27, 96, 0.1);
         }
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 1.5rem 3.5rem rgba(255, 107, 139, 0.15) !important;
+            box-shadow: 0 1.5rem 3.5rem rgba(216, 27, 96, 0.18) !important;
         }
         
-        /* Buttons Custom */
+        /* Buttons Custom Deep Pink */
         .btn-pink {
-            background: linear-gradient(135deg, var(--primary-pink), #ff8e53);
+            background: linear-gradient(135deg, var(--primary-pink), var(--hover-pink));
             color: white;
             border: none;
             border-radius: 8px;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
         }
         .btn-pink:hover {
+            background: linear-gradient(135deg, var(--hover-pink), var(--dark-pink));
             color: white;
-            opacity: 0.9;
+            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
         }
         .btn-demo {
-            border: 1px solid var(--primary-pink);
+            border: 1.5px solid var(--primary-pink);
             background: transparent;
             color: var(--primary-pink);
             border-radius: 8px;
             transition: all 0.3s;
         }
         .btn-demo:hover {
-            background: var(--light-pink);
-            color: var(--hover-pink);
-            border-color: var(--hover-pink);
+            background: var(--primary-pink);
+            color: white;
         }
 
         /* Category Filter Badges */
@@ -92,33 +96,47 @@
             transition: all 0.3s;
             font-weight: 500;
             background-color: #fff;
-            color: #6c757d;
+            color: #455A64;
+            border: 1px solid rgba(216, 27, 96, 0.2) !important;
         }
         .badge-category:hover, .badge-category.active {
-            background: linear-gradient(135deg, var(--primary-pink), #ff8e53) !important;
+            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink)) !important;
             color: #fff !important;
-            box-shadow: 0 4px 15px rgba(255, 107, 139, 0.3);
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.3);
             border-color: transparent !important;
         }
 
         .img-container {
             position: relative;
             overflow: hidden;
+            background-color: #eceff1;
         }
         .img-container img {
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
         .card:hover .img-container img {
-            transform: scale(1.06);
+            transform: scale(1.08);
+        }
+
+        /* Iframe Mockup Smartphone untuk Demo */
+        .smartphone-mockup {
+            width: 360px;
+            height: 640px;
+            border: 12px solid #263238;
+            border-radius: 24px;
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body class="bg-light">
 
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
         <div class="container">
             <a class="navbar-brand fw-bold text-pink fs-3" href="index.html">
-                <i class="fa-solid fa-heart-pulse me-2"></i>NikahDigital
+                <i class="fa-solid fa-heart me-2"></i>NikahDigital
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -135,23 +153,26 @@
         </div>
     </nav>
 
+    <!-- HEADER & FILTER PANEL -->
     <section class="py-5 bg-white border-bottom">
         <div class="container text-center">
-            <span class="badge bg-pink-light text-pink mb-3 px-3 py-2 rounded-pill fw-semibold">Rose Gold & Pink Collection 2026</span>
-            <h1 class="fw-bold font-serif text-dark mb-3 display-5">Pilihan Tema Undangan Estetik</h1>
-            <p class="text-muted mx-auto mb-4" style="max-width: 650px;">Sentuhan palet warna merah muda, pastel, dan rose gold yang melambangkan kelembutan cinta kasih Anda berdua.</p>
+            <span class="badge bg-pink-light text-pink mb-3 px-3 py-2 rounded-pill fw-semibold">Deep Pink Exclusive Collection 2026</span>
+            <h1 class="fw-bold font-serif text-dark mb-3 display-5">Katalog Undangan Terlengkap</h1>
+            <p class="text-muted mx-auto mb-4" style="max-width: 650px;">Sentuhan palet warna pink tua premium dan magenta yang tegas, menyebarkan kesan romantis sekaligus mewah di hari bahagia Anda.</p>
             
+            <!-- Filter Kategori Aktif -->
             <div class="d-flex flex-wrap justify-content-center gap-2 mb-4" id="filterContainer">
-                <button class="btn badge-category border px-4 py-2 rounded-pill active" onclick="filterTemplates('all')">Semua Desain</button>
-                <button class="btn badge-category border px-4 py-2 rounded-pill" onclick="filterTemplates('minimalis')">Modern Minimalist</button>
-                <button class="btn badge-category border px-4 py-2 rounded-pill" onclick="filterTemplates('luxury')">Luxury Rose Gold</button>
-                <button class="btn badge-category border px-4 py-2 rounded-pill" onclick="filterTemplates('floral')">Rustic Floral</button>
-                <button class="btn badge-category border px-4 py-2 rounded-pill" onclick="filterTemplates('adat')">Adat & Tradisional</button>
+                <button class="btn badge-category px-4 py-2 rounded-pill active" onclick="filterTemplates('all')">Semua Desain</button>
+                <button class="btn badge-category px-4 py-2 rounded-pill" onclick="filterTemplates('minimalis')">Modern Minimalist</button>
+                <button class="btn badge-category px-4 py-2 rounded-pill" onclick="filterTemplates('luxury')">Luxury Deep Magenta</button>
+                <button class="btn badge-category px-4 py-2 rounded-pill" onclick="filterTemplates('floral')">Rustic Floral</button>
+                <button class="btn badge-category px-4 py-2 rounded-pill" onclick="filterTemplates('adat')">Adat & Tradisional</button>
             </div>
 
+            <!-- Pencarian Live Search -->
             <div class="row justify-content-center">
                 <div class="col-md-5">
-                    <div class="input-group rounded-pill overflow-hidden border">
+                    <div class="input-group rounded-pill overflow-hidden border" style="border-color: rgba(216,27,96,0.3) !important;">
                         <span class="input-group-text bg-white border-0 pe-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
                         <input type="text" id="searchInput" class="form-control border-0 py-2 ps-3 shadow-none" placeholder="Cari nama tema undangan..." onkeyup="searchTemplate()">
                     </div>
@@ -160,19 +181,22 @@
         </div>
     </section>
 
+    <!-- KATALOG PRODUK -->
     <section class="py-5">
         <div class="container">
             <div class="row g-4" id="katalogRow">
                 
+                <!-- TEMA 1: FLORAL PINK (RUSTIC) -->
                 <div class="col-md-4 item-card" data-category="floral">
-                    <div class="card h-100 shadow-sm border-0 overflow-hidden position-relative">
+                    <div class="card h-100 shadow-sm overflow-hidden position-relative">
                         <span class="position-absolute top-0 start-0 m-3 badge bg-danger z-3 shadow-sm">Best Seller</span>
                         <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&auto=format&fit=crop&q=80" class="card-img-top object-fit-cover" style="height: 250px;" alt="Blossom Wedding">
+                            <!-- Foto Sinkron: Karangan bunga sakura pink pekat asli -->
+                            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&auto=format&fit=crop&q=80" class="card-img-top object-fit-cover" style="height: 250px;" alt="Blossom Pink Warmth">
                         </div>
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <small class="text-pink fw-semibold">Rustic Floral</small>
+                                <small class="text-pink fw-semibold"><i class="fa-solid fa-leaf me-1"></i> Rustic Floral</small>
                                 <span class="text-warning small"><i class="fa-solid fa-star"></i> 4.9 (142 ulasan)</span>
                             </div>
                             <h5 class="card-title fw-bold text-dark font-serif mb-2">Blossom Pink Warmth</h5>
@@ -190,23 +214,25 @@
                                 <span class="text-muted text-decoration-line-through small">Rp 149.000</span>
                                 <span class="h5 fw-bold text-pink d-block">Rp 99.000</span>
                             </div>
-                            <div class="row g-2">
-                                <div class="col-6"><a href="#" class="btn btn-demo w-100 fw-medium"><i class="fa-solid fa-eye me-1"></i> Demo</a></div>
-                                <div class="col-6"><a href="bayar.html" class="btn btn-pink w-100 fw-medium">Pilih</a></div>
+                            <div class="row g-2 mt-auto">
+                                <div class="col-6"><button class="btn btn-demo w-100 fw-medium" onclick="openDemo('Blossom Pink Warmth', 'https://example.com/demo1')"><i class="fa-solid fa-phone-bluray me-1"></i> Demo</button></div>
+                                <div class="col-6"><a href="bayar.html?tema=blossom-pink" class="btn btn-pink w-100 fw-medium"><i class="fa-solid fa-basket-shopping me-1"></i> Pilih</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- TEMA 2: MINIMALIST BLUSH (MINIMALIS) -->
                 <div class="col-md-4 item-card" data-category="minimalis">
-                    <div class="card h-100 shadow-sm border-0 overflow-hidden position-relative">
+                    <div class="card h-100 shadow-sm overflow-hidden position-relative">
                         <span class="position-absolute top-0 start-0 m-3 badge bg-pink text-white z-3 shadow-sm">Terbaru</span>
                         <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=600&auto=format&fit=crop&q=80" class="card-img-top object-fit-cover" style="height: 250px;" alt="Minimalist Blush">
+                            <!-- Foto Sinkron: Undangan cetak berlatar pink polos bersih berfokus pada tipografi -->
+                            <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&auto=format&fit=crop&q=80" class="card-img-top object-fit-cover" style="height: 250px;" alt="Serene Blush Pastel">
                         </div>
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <small class="text-pink fw-semibold">Modern Minimalist</small>
+                                <small class="text-pink fw-semibold"><i class="fa-solid fa-crop me-1"></i> Modern Minimalist</small>
                                 <span class="text-warning small"><i class="fa-solid fa-star"></i> 4.8 (64 ulasan)</span>
                             </div>
                             <h5 class="card-title fw-bold text-dark font-serif mb-2">Serene Blush Pastel</h5>
@@ -224,26 +250,28 @@
                                 <span class="text-muted text-decoration-line-through small">Rp 129.000</span>
                                 <span class="h5 fw-bold text-pink d-block">Rp 79.000</span>
                             </div>
-                            <div class="row g-2">
-                                <div class="col-6"><a href="#" class="btn btn-demo w-100 fw-medium"><i class="fa-solid fa-eye me-1"></i> Demo</a></div>
-                                <div class="col-6"><a href="bayar.html" class="btn btn-pink w-100 fw-medium">Pilih</a></div>
+                            <div class="row g-2 mt-auto">
+                                <div class="col-6"><button class="btn btn-demo w-100 fw-medium" onclick="openDemo('Serene Blush Pastel', 'https://example.com/demo2')"><i class="fa-solid fa-phone-bluray me-1"></i> Demo</button></div>
+                                <div class="col-6"><a href="bayar.html?tema=serene-blush" class="btn btn-pink w-100 fw-medium"><i class="fa-solid fa-basket-shopping me-1"></i> Pilih</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- TEMA 3: LUXURY MAGENTA (LUXURY) -->
                 <div class="col-md-4 item-card" data-category="luxury">
-                    <div class="card h-100 shadow-sm border-0 overflow-hidden position-relative">
+                    <div class="card h-100 shadow-sm overflow-hidden position-relative">
                         <span class="position-absolute top-0 start-0 m-3 badge bg-warning text-dark z-3 shadow-sm">Premium</span>
                         <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80" class="card-img-top object-fit-cover" style="height: 250px;" alt="Luxury Rose Gold">
+                            <!-- Foto Sinkron: Dekorasi pesta malam dengan sorotan lampu magenta/pink tua glamor -->
+                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80" class="card-img-top object-fit-cover" style="height: 250px;" alt="Royal Magenta Glamour">
                         </div>
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <small class="text-pink fw-semibold">Luxury / Elegant</small>
+                                <small class="text-pink fw-semibold"><i class="fa-solid fa-crown me-1"></i> Luxury / Elegant</small>
                                 <span class="text-warning small"><i class="fa-solid fa-star"></i> 5.0 (198 ulasan)</span>
                             </div>
-                            <h5 class="card-title fw-bold text-dark font-serif mb-2">Royal Rose Gold Glamour</h5>
+                            <h5 class="card-title fw-bold text-dark font-serif mb-2">Royal Magenta Glamour</h5>
                             <p class="card-text text-muted small flex-grow-1">Kombinasi warna merah muda satin metalik dan border foil emas berkilau. Dirancang mewah untuk resepsi gedung mewah.</p>
                             
                             <div class="my-3 py-2 border-top border-bottom">
@@ -255,4 +283,216 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <span class="text-muted text-
+                                <span class="text-muted text-decoration-line-through small">Rp 299.000</span>
+                                <span class="h5 fw-bold text-pink d-block">Rp 149.000</span>
+                            </div>
+                            <div class="row g-2 mt-auto">
+                                <div class="col-6"><button class="btn btn-demo w-100 fw-medium" onclick="openDemo('Royal Magenta Glamour', 'https://example.com/demo3')"><i class="fa-solid fa-phone-bluray me-1"></i> Demo</button></div>
+                                <div class="col-6"><a href="bayar.html?tema=royal-magenta" class="btn btn-pink w-100 fw-medium"><i class="fa-solid fa-basket-shopping me-1"></i> Pilih</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEMA 4: ADAT JAVA PINK (ADAT) -->
+                <div class="col-md-4 item-card" data-category="adat">
+                    <div class="card h-100 shadow-sm overflow-hidden position-relative">
+                        <div class="img-container">
+                            <!-- Foto Sinkron: Pernikahan tradisional berbalut kebaya/corak kain bernuansa merah muda -->
+                            <img src="https://images.unsplash.com/photo-1610116306796-6ebd30d741a6?w=600&auto=format&fit=crop&q=80" class="card-img-top object-fit-cover" style="height: 250px;" alt="Javanese Pink Kebaya">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <small class="text-pink fw-semibold"><i class="fa-solid fa-gopuram me-1"></i> Adat / Tradisional</small>
+                                <span class="text-warning small"><i class="fa-solid fa-star"></i> 4.9 (76 ulasan)</span>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark font-serif mb-2">Javanese Pink Kebaya</h5>
+                            <p class="card-text text-muted small flex-grow-1">Kolaborasi pola gunungan wayang yang sakral berlatar warna merah muda lembut. Sentuhan adat tradisi yang dikemas modis.</p>
+                            
+                            <div class="my-3 py-2 border-top border-bottom">
+                                <div class="row g-2 text-muted small">
+                                    <div class="col-6"><i class="fa-solid fa-guitar text-pink me-1"></i> Gending Gamelan</div>
+                                    <div class="col-6"><i class="fa-solid fa-clock text-pink me-1"></i> Filter Sesi Acara</div>
+                                    <div class="col-6"><i class="fa-solid fa-gift text-pink me-1"></i> Kado Fisik / Alamat</div>
+                                    <div class="col-6"><i class="fa-solid fa-shield-halved text-pink me-1"></i> Protokol Aman</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <span class="text-muted text-decoration-line-through small">Rp 199.000</span>
+                                <span class="h5 fw-bold text-pink d-block">Rp 119.000</span>
+                            </div>
+                            <div class="row g-2 mt-auto">
+                                <div class="col-6"><button class="btn btn-demo w-100 fw-medium" onclick="openDemo('Javanese Pink Kebaya', 'https://example.com/demo4')"><i class="fa-solid fa-phone-bluray me-1"></i> Demo</button></div>
+                                <div class="col-6"><a href="bayar.html?tema=javanese-pink" class="btn btn-pink w-100 fw-medium"><i class="fa-solid fa-basket-shopping me-1"></i> Pilih</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEMA 5: WATERCOLOR SAKURA (FLORAL) -->
+                <div class="col-md-4 item-card" data-category="floral">
+                    <div class="card h-100 shadow-sm overflow-hidden position-relative">
+                        <div class="img-container">
+                            <!-- Foto Sinkron: Lukisan kelopak ceri/sakura bergaya transparan cat air pekat -->
+                            <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?w=600&auto=format&fit=crop&q=80" class="card-img-top object-fit-cover" style="height: 250px;" alt="Watercolor Cherry Blossom">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <small class="text-pink fw-semibold"><i class="fa-solid fa-leaf me-1"></i> Rustic Floral</small>
+                                <span class="text-warning small"><i class="fa-solid fa-star"></i> 4.8 (53 ulasan)</span>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark font-serif mb-2">Watercolor Cherry Blossom</h5>
+                            <p class="card-text text-muted small flex-grow-1">Gaya lukisan cat air transparan bermotif kelopak bunga sakura berguguran dengan efek animasi transisi daun jatuh.</p>
+                            
+                            <div class="my-3 py-2 border-top border-bottom">
+                                <div class="row g-2 text-muted small">
+                                    <div class="col-6"><i class="fa-solid fa-snowflake text-pink me-1"></i> Efek Gugur Daun</div>
+                                    <div class="col-6"><i class="fa-solid fa-music text-pink me-1"></i> Custom Audio</div>
+                                    <div class="col-6"><i class="fa-solid fa-images text-pink me-1"></i> Galeri Video</div>
+                                    <div class="col-6"><i class="fa-solid fa-envelope text-pink me-1"></i> e-Wish Book</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <span class="text-muted text-decoration-line-through small">Rp 149.000</span>
+                                <span class="h5 fw-bold text-pink d-block">Rp 99.000</span>
+                            </div>
+                            <div class="row g-2 mt-auto">
+                                <div class="col-6"><button class="btn btn-demo w-100 fw-medium" onclick="openDemo('Watercolor Cherry Blossom', 'https://example.com/demo5')"><i class="fa-solid fa-phone-bluray me-1"></i> Demo</button></div>
+                                <div class="col-6"><a href="bayar.html?tema=watercolor-sakura" class="btn btn-pink w-100 fw-medium"><i class="fa-solid fa-basket-shopping me-1"></i> Pilih</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEMA 6: CLASSY MAGNOLIA (LUXURY) -->
+                <div class="col-md-4 item-card" data-category="luxury">
+                    <div class="card h-100 shadow-sm overflow-hidden position-relative">
+                        <span class="position-absolute top-0 start-0 m-3 badge bg-dark text-white z-3 shadow-sm">Limited Edition</span>
+                        <div class="img-container">
+                            <!-- Foto Sinkron: Detail tekstur kain sutra pink tua diletakkan dekorasi cincin kawin mewah -->
+                            <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&auto=format&fit=crop&q=80" class="card-img-top object-fit-cover" style="height: 250px;" alt="Classy Magnolia">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <small class="text-pink fw-semibold"><i class="fa-solid fa-crown me-1"></i> Luxury / Elegant</small>
+                                <span class="text-warning small"><i class="fa-solid fa-star"></i> 5.0 (39 ulasan)</span>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark font-serif mb-2">Classy Magnolia & Pink Silk</h5>
+                            <p class="card-text text-muted small flex-grow-1">Kombinasi ornamen Magnolia Premium dengan latar tekstur kain sutra pink mengkilap yang berwibawa tinggi.</p>
+                            
+                            <div class="my-3 py-2 border-top border-bottom">
+                                <div class="row g-2 text-muted small">
+                                    <div class="col-6"><i class="fa-solid fa-wand-magic-sparkles text-pink me-1"></i> Premium Filter</div>
+                                    <div class="col-6"><i class="fa-solid fa-share-nodes text-pink me-1"></i> Integrasi WA Blast</div>
+                                    <div class="col-6"><i class="fa-solid fa-bell text-pink me-1"></i> Notif RSVP Instant</div>
+                                    <div class="col-6"><i class="fa-solid fa-download text-pink me-1"></i> Export Data Tamu</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <span class="text-muted text-decoration-line-through small">Rp 349.000</span>
+                                <span class="h5 fw-bold text-pink d-block">Rp 199.000</span>
+                            </div>
+                            <div class="row g-2 mt-auto">
+                                <div class="col-6"><button class="btn btn-demo w-100 fw-medium" onclick="openDemo('Classy Magnolia & Pink Silk', 'https://example.com/demo6')"><i class="fa-solid fa-phone-bluray me-1"></i> Demo</button></div>
+                                <div class="col-6"><a href="bayar.html?tema=classy-magnolia" class="btn btn-pink w-100 fw-medium"><i class="fa-solid fa-basket-shopping me-1"></i> Pilih</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- POPUP MODAL UNTUK PREVIEW LIVE DEMO -->
+    <div class="modal fade" id="demoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header bg-pink text-white rounded-top-4">
+                    <h5 class="modal-title font-serif fw-bold" id="demoModalTitle">Live Preview</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-shadow="none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light text-center py-4">
+                    <!-- Simulasi Layar HP untuk demo template asli -->
+                    <div class="smartphone-mockup bg-white">
+                        <div class="d-flex align-items-center justify-content-center h-100 text-muted p-4">
+                            <div>
+                                <i class="fa-solid fa-heart-pulse text-pink display-4 mb-3 animate-pulse"></i>
+                                <h6 class="fw-bold text-dark">Simulasi Undangan Aktif</h6>
+                                <p class="small">Menampilkan mockup sistem smartphone real-time untuk tema yang Anda pilih.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-white border-0 justify-content-center">
+                    <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Tutup Preview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container text-center">
+            <p class="mb-2 fw-bold text-uppercase font-serif text-pink fs-4">NikahDigital</p>
+            <p class="text-muted small mb-4">Solusi platform pembuatan undangan online berkelas, cepat, dan terpercaya di Indonesia.</p>
+            <div class="d-flex justify-content-center gap-3 mb-4 text-muted fs-5">
+                <a href="#" class="text-pink text-reset"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="text-pink text-reset"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" class="text-pink text-reset"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <p class="mb-0 text-muted small">&copy; 2026 NikahDigital. All Rights Reserved. Dibuat dengan penuh ❤️ di Indonesia.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script Fungsionalitas Engine -->
+    <script>
+        // Membuka Jendela Demo Secara Interaktif
+        function openDemo(templateName, mockUrl) {
+            document.getElementById('demoModalTitle').innerText = "Demo Interaktif: " + templateName;
+            var myModal = new bootstrap.Modal(document.getElementById('demoModal'));
+            myModal.show();
+        }
+
+        // Fungsi Penapis Kategori Atas
+        function filterTemplates(category) {
+            const buttons = document.querySelectorAll('#filterContainer .badge-category');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Pengaman penanda tombol aktif
+            if(event) {
+                event.target.classList.add('active');
+            }
+
+            const cards = document.querySelectorAll('.item-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Fungsi Pencarian Dinamis
+        function searchTemplate() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.item-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').innerText.toLowerCase();
+                const description = card.querySelector('.card-text').innerText.toLowerCase();
+                
+                if (title.includes(input) || description.includes(input)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
